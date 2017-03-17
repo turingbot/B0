@@ -1,4 +1,4 @@
---Begin Tools.lua :)
+
 local SUDO = 151499613 -- put Your ID here! <===
 function exi_files(cpath)
     local files = {}
@@ -626,7 +626,7 @@ if is_sudo(msg) then
 					redis:set('CheckExpire::'..msg.to.id,true)
 				end
 				if lang then
-					tdcli.sendMessage(SUDO, 0, 1, 'ربات در گروه '..matches[2]..' به مدت '..matches[3]..' روز تمدید گردید.', 1, 'md')
+					tdcli.sendMessage(SUDO, 0, 1, 'ربات در گروه '..matches[3]..' به مدت '..matches[2]..' روز تمدید گردید.', 1, 'md')
 					tdcli.sendMessage(matches[2], 0, 1, 'ربات توسط ادمین به مدت `'..matches[3]..'` روز شارژ شد\nبرای مشاهده زمان شارژ گروه دستور /check استفاده کنید...',1 , 'md')
 				else
 					tdcli.sendMessage(SUDO, 0, 1, '*Recharged successfully in the group:* `'..matches[2]..'`\n_Expire Date:_ `'..matches[3]..'` *Day(s)*', 1, 'md')
@@ -1182,7 +1182,7 @@ if matches[1] == "helptools" and is_mod(msg) then
 if not lang then
 text = [[
 
-_Sudoer And Admins Beyond Bot Help :_
+_Sudoer And Admins Bot Help :_
 
 *!visudo* `[username|id|reply]`
 _Add Sudo_
@@ -1286,7 +1286,7 @@ _You can use_ *[!/#]* _at the beginning of commands._
  
 *This means only the sudoers and its bot admins can use mentioned commands.*
 
-*Good luck ;)*]]
+*Good luck .*]]
 tdcli.sendMessage(msg.chat_id_, 0, 1, text, 1, 'md')
 else
 
@@ -1395,7 +1395,7 @@ _این راهنما فقط برای سودو ها/ادمین های ربات م
 
 `این به این معناست که فقط سودو ها/ادمین های ربات میتوانند از دستورات بالا استفاده کنند!`
 
-*موفق باشید ;)*]]
+*موفق باشید .*]]
 tdcli.sendMessage(msg.chat_id_, 0, 1, text, 1, 'md')
 end
 
@@ -1449,4 +1449,4 @@ patterns = {
 }, 
 run = run, pre_process = pre_process
 }
--- #End By @BeyondTeam
+

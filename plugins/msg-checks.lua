@@ -1,4 +1,4 @@
---Begin msg_checks.lua By @SoLiD
+
 local TIME_CHECK = 2
 local function pre_process(msg)
 local data = load_data(_config.moderation.data)
@@ -153,10 +153,40 @@ end
 	else
 		lock_markdown = 'no'
 	end
+    if settings.fosh then
+		fosh = settings.fosh
+	else
+		fosh = 'no'
+	end
+    if settings.ads then
+		ads = settings.ads
+	else
+		ads = 'no'
+	end
+    if settings.english then
+		english = settings.english
+	else
+		english = 'no'
+	end
+	if settings.views then
+		views = settings.views
+	else
+		views = 'no'
+	end
+	if settings.emoji then
+		emoji = settings.emoji
+	else
+		emoji = 'no'
+	end
 	if settings.lock_webpage then
 		lock_webpage = settings.lock_webpage
 	else
 		lock_webpage = 'no'
+	end
+	if settings.lock_tabchi then
+		lock_tabchi = settings.lock_tabchi
+	else
+		lock_tabchi = 'no'
 	end
   if msg.adduser or msg.joinuser or msg.deluser then
   if mute_tgservice == "yes" then
@@ -303,6 +333,60 @@ if tag_caption and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
+local tabchi_msg = 
+msg.text:match("Bia Pv") or
+msg.text:match("Addi") or
+msg.text:match("bia pv") or
+msg.text:match("addi") or
+msg.text:match("pv") or
+msg.text:match("Ad") or
+msg.text:match("ad") or
+msg.text:match("pv") or
+msg.text:match("Add") or
+msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or
+msg.text:match("عشقم") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or
+msg.text:match("عشقم بیا پیوی کارت دارم")
+if tabchi_msg
+and lock_tabchi == "yes" then
+ if is_channel then
+   del_msg (chat, tonumber(msg.id))
+    kick_user(user, chat)
+      end
+    end
+local fosh_caption = msg.media.caption:match("کص")or msg.media.caption:match("کون")or msg.media.caption:match("ممه")or msg.media.caption:match("کیری")or msg.media.caption:match("حرومی")or msg.media.caption:match("ننه") or msg.media.caption:match("کصده")or msg.media.caption:match("کث")or msg.media.caption:match("کسکش")or msg.media.caption:match("کصکش")or msg.media.caption:match("لاشی")or msg.media.caption:match("ناموس")or msg.media.caption:match("جنده")or msg.media.caption:match("یتیم")or msg.media.caption:match("خارکسده")or msg.media.caption:match("مادرجنده")or msg.media.caption:match("حرومزاده")or msg.media.caption:match("خواهرجنده")or msg.media.caption:match("خواهرتو")or msg.media.caption:match("مادرتو")or msg.media.caption:match("کونی")or msg.media.caption:match("اوبی")or msg.media.caption:match("لاشی")or msg.media.caption:match("kir")or msg.media.caption:match("kos")or msg.media.caption:match("lashi")
+if fosh_caption and fosh == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local ads_caption = msg.media.caption:match("شارژ") or msg.media.caption:match("چالش") or msg.media.caption:match("عضو چنل شید")  or msg.media.caption:match("ایرانسل") or msg.media.caption:match("همراه اول") or msg.media.caption:match("رایتل") or msg.media.caption:match("جایزه نفر اول")  or msg.media.caption:match("جایزه نفر دوم") or msg.media.caption:match("جایزه نفر سوم") or msg.media.caption:match("پیج اینستا")  or msg.media.caption:match("instagram.com") or msg.media.caption:match("www") or msg.media.caption:match("t.me/") or msg.media.caption:match("telegram.me/") or msg.media.caption:match("چالش") or msg.media.caption:match("کد شارژ")  or msg.media.caption:match("شارژ رایگان")  or msg.media.caption:match("پیج تلگرام")  or msg.media.caption:match("کانال تلگرامی ما") or msg.media.caption:match("جایزه جایزه") or msg.media.caption:match("پخش کنید")  or msg.media.caption:match("چالش داریم") or msg.media.caption:match("تبلیغات") or msg.media.caption:match("پذیرفتن تبلیغ")
+if ads_caption and ads == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local english_caption = msg.media.caption:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]")
+if english_caption and english == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+local emoji_caption = msg.media.caption:match("[😀😬😁😂😃😄😅☺️🙃🙂😊😉😇😆😋😌😍😘😗😙😚🤗😎🤓🤑😛😝😜😏😶😐😑😒🙄🤔😕😔😡😠😟😞😳🙁☹️😣😖😫😩😤😧😦😯😰😨😱😮😢😥😪😓😭😵😲💩💤😴🤕🤒😷🤐😈👿👹👺💀👻👽😽😼😻😹😸😺🤖🙀😿😾🙌🏻👏🏻👋🏻👍🏻👎🏻👊🏻✊🏻✌🏻👌🏻✋🏻👐🏻💪🏻🙏🏻☝🏻️👆🏻👇🏻👈🏻👉🏻🖕🏻🖐🏻🤘🏻🖖🏻✍🏻💅🏻👄👅👂🏻👃🏻👁👀👤👥👱🏻👩🏻👨🏻👧🏻👦🏻👶🏻🗣👴🏻👵🏻👲🏻🏃🏻🚶🏻💑👩‍❤️‍👩👨‍❤️‍👨💏👩‍❤️‍💋‍👩👨‍❤️‍💋‍👨👪👩‍👩‍👧‍👦👩‍👩‍👧👩‍👩‍👦👨‍👩‍👧‍👧👨‍👩‍👦‍👦👨‍👩‍👧‍👦👨‍👩‍👧👩‍👩‍👦‍👦👩‍👩‍👧‍👧👨‍👨‍👦👨‍👨‍👧👨‍👨‍👧‍👦👨‍👨‍👦‍👦👨‍👨‍👧‍👧👘👙👗👔👖👕👚💄💋👣👠👡👢👞🎒⛑👑🎓🎩👒👟👝👛👜💼👓🕶💍🌂🐶🐱🐭🐹🐰🐻🐼🐸🐽🐷🐮🦁🐯🐨🐙🐵🙈🙉🙊🐒🐔🐗🐺🐥🐣🐤🐦🐧🐴🦄🐝🐛🐌🐞🐜🕷🦂🦀🐍🐢🐠🐟🐅🐆🐊🐋🐬🐡🐃🐂🐄🐪🐫🐘🐐🐓🐁🐀🐖🐎🐑🐏🦃🕊🐕]")
+if emoji_caption and emoji == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
 if is_filter(msg, msg.media.caption) then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
@@ -317,6 +401,106 @@ if arabic_caption and lock_arabic == "yes" then
   elseif is_chat then
 kick_user(user, chat)
       end
+   end
+end
+if msg.text then
+			local _nl, ctrl_chars = string.gsub(msg.text, '%c', '')
+			 local _nl, real_digits = string.gsub(msg.text, '%d', '')
+			if lock_spam == "yes" then
+   if string.len(msg.text) > 2049 or ctrl_chars > 40 or real_digits > 2000 then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+      end
+   end
+end
+
+if views =="yes" and msg.views_ ~= 0 then
+if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
+if link_msg
+and lock_link == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+local tag_msg = msg.text:match("@") or msg.text:match("#")
+if tag_msg and lock_tag == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local fosh_msg = msg.text:match("کص")or msg.text:match("کون")or msg.text:match("ممه")or msg.text:match("کیری")or msg.text:match("حرومی")or msg.text:match("ننه") or msg.text:match("کصده")or msg.text:match("کث")or msg.text:match("کسکش")or msg.text:match("کصکش")or msg.text:match("لاشی")or msg.text:match("ناموس")or msg.text:match("جنده")or msg.text:match("یتیم")or msg.text:match("خارکسده")or msg.text:match("مادرجنده")or msg.text:match("حرومزاده")or msg.text:match("خواهرجنده")or msg.text:match("خواهرتو")or msg.text:match("مادرتو")or msg.text:match("کونی")or msg.text:match("اوبی")or msg.text:match("لاشی")or msg.text:match("kir")or msg.text:match("kos")or msg.text:match("lashi")
+if fosh_msg and fosh == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local ads_msg =msg.text:match("شارژ") or msg.text:match("چالش") or msg.text:match("عضو چنل شید")  or msg.text:match("ایرانسل") or msg.text:match("همراه اول") or msg.text:match("رایتل") or msg.text:match("جایزه نفر اول")  or msg.text:match("جایزه نفر دوم") or msg.text:match("جایزه نفر سوم") or msg.text:match("پیج اینستا")  or msg.text:match("instagram.com") or msg.text:match("www") or msg.text:match("t.me/") or msg.text:match("telegram.me/") or msg.text:match("چالش") or msg.text:match("کد شارژ")  or msg.text:match("شارژ رایگان")  or msg.text:match("پیج تلگرام")  or msg.text:match("کانال تلگرامی ما") or msg.text:match("جایزه جایزه") or msg.text:match("پخش کنید")  or msg.text:match("چالش داریم") or msg.text:match("تبلیغات") or msg.text:match("پذیرفتن تبلیغ")
+if ads_msg and ads == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+
+local english_msg = msg.text:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]") 
+if english_msg and english == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+local emoji_msg = msg.text:match("[😀😬😁😂😃😄😅☺️🙃🙂😊😉😇😆😋😌😍😘😗😙😚🤗😎🤓🤑😛😝😜😏😶😐😑😒🙄🤔😕😔😡😠😟😞😳🙁☹️😣😖😫😩😤😧😦😯😰😨😱😮😢😥😪😓😭😵😲💩💤😴🤕🤒😷🤐😈👿👹👺💀👻👽😽😼😻😹😸😺🤖🙀😿😾🙌🏻👏🏻👋🏻👍🏻👎🏻👊🏻✊🏻✌🏻👌🏻✋🏻👐🏻💪🏻🙏🏻☝🏻️👆🏻👇🏻👈🏻👉🏻🖕🏻🖐🏻🤘🏻🖖🏻✍🏻💅🏻👄👅👂🏻👃🏻👁👀👤👥👱🏻👩🏻👨🏻👧🏻👦🏻👶🏻🗣👴🏻👵🏻👲🏻🏃🏻🚶🏻💑👩‍❤️‍👩👨‍❤️‍👨💏👩‍❤️‍💋‍👩👨‍❤️‍💋‍👨👪👩‍👩‍👧‍👦👩‍👩‍👧👩‍👩‍👦👨‍👩‍👧‍👧👨‍👩‍👦‍👦👨‍👩‍👧‍👦👨‍👩‍👧👩‍👩‍👦‍👦👩‍👩‍👧‍👧👨‍👨‍👦👨‍👨‍👧👨‍👨‍👧‍👦👨‍👨‍👦‍👦👨‍👨‍👧‍👧👘👙👗👔👖👕👚💄💋👣👠👡👢👞🎒⛑👑🎓🎩👒👟👝👛👜💼👓🕶💍🌂🐶🐱🐭🐹🐰🐻🐼🐸🐽🐷🐮🦁🐯🐨🐙🐵🙈🙉🙊🐒🐔🐗🐺🐥🐣🐤🐦🐧🐴🦄🐝🐛🐌🐞🐜🕷🦂🦀🐍🐢🐠🐟🐅🐆🐊🐋🐬🐡🐃🐂🐄🐪🐫🐘🐐🐓🐁🐀🐖🐎🐑🐏🦃🕊🐕]") 
+if emoji_msg and emoji == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+
+if is_filter(msg, msg.text) then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+      end
+    end
+local arabic_msg = msg.text:match("[\216-\219][\128-\191]")
+if arabic_msg and lock_arabic == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+if msg.text:match("(.*)")
+and mute_text == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+     end
    end
 end
 if msg.text then
@@ -348,6 +532,26 @@ if tag_msg and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
+local tabchi_msg = 
+msg.text:match("Bia Pv") or
+msg.text:match("Addi") or
+msg.text:match("bia pv") or
+msg.text:match("addi") or
+msg.text:match("pv") or
+msg.text:match("Ad") or
+msg.text:match("ad") or
+msg.text:match("pv") or
+msg.text:match("Add") or
+msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or
+msg.text:match("عشقم") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or
+msg.text:match("عشقم بیا پیوی کارت دارم")
+if tabchi_msg
+and lock_tabchi == "yes" then
+ if is_channel then
+   del_msg (chat, tonumber(msg.id))
+    kick_user(user, chat)
+      end
+    end
 if is_filter(msg, msg.text) then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
@@ -357,6 +561,14 @@ kick_user(user, chat)
     end
 local arabic_msg = msg.text:match("[\216-\219][\128-\191]")
 if arabic_msg and lock_arabic == "yes" then
+ if is_channel then
+ del_msg(chat, tonumber(msg.id))
+  elseif is_chat then
+kick_user(user, chat)
+   end
+end
+local tabchi = msg.text:match("ادی") or msg.text:match("addi")
+if tabchi and lock_tabchi == "yes" then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
   elseif is_chat then
@@ -453,4 +665,4 @@ return {
 	patterns = {},
 	pre_process = pre_process
 }
---End msg_checks.lua--
+

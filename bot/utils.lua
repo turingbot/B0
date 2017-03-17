@@ -258,7 +258,7 @@ end
 function check_markdown(text) --markdown escape ( when you need to escape markdown , use it like : check_markdown('your text')
 		str = text
 		if str:match('_') then
-			output = str:gsub('_',[[\_]])
+			output = str:gsub('_','\\_')
 		elseif str:match('*') then
 			output = str:gsub('*','\\*')
 		elseif str:match('`') then
@@ -541,7 +541,7 @@ local hash = "gp_lang:"..chat_id
 local lang = redis:get(hash)
     local data = load_data(_config.moderation.data)
     local i = 1
-  if not data[tostring(msg.chat_id_)] then
+  if not data[tostring(chat_id)] then
   if not lang then
     return '_Group is not added_'
 else
@@ -573,7 +573,7 @@ local hash = "gp_lang:"..chat_id
 local lang = redis:get(hash)
     local data = load_data(_config.moderation.data)
     local i = 1
-  if not data[tostring(msg.chat_id_)] then
+  if not data[tostring(chat_id)] then
   if not lang then
     return '_Group is not added_'
 else
@@ -613,7 +613,7 @@ local lang = redis:get(hash)
     if not lang then
 					return "_No_ *globally banned* _users available_"
    else
-					return "*هیچ کاربری از گروه های ربات محروم نشده*"
+					return "*هیچ کاربری از گروه های ربات محروم نشده است*"
              end
 				end
         if not lang then
