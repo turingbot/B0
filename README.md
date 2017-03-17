@@ -21,8 +21,8 @@ cd $HOME
 git clone https://github.com/turingbot/B.git
 cd BDReborn
 chmod +x beyond.sh
-./turing.sh install
-./turing.sh 
+./beyond.sh install
+./beyond.sh 
 # Enter a phone number & confirmation code.
 ```
 ### One command
