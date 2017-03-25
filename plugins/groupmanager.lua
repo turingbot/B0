@@ -3307,10 +3307,12 @@ tdcli_function ({
   end
   if matches[1] == 'setflood' and is_mod(msg) or matches[1] == 'حساسیت اسپم' and is_mod(msg) then
 			if tonumber(matches[2]) < 1 or tonumber(matches[2]) > 50 then
+				if not lang then
 				return "_Wrong number, range is_ *[1-50]*"
 				else
 				return "عدد اشتباه است محدوده مجاز *[1-50]*"
       end
+	  end
 			local flood_max = matches[2]
 			data[tostring(chat)]['settings']['num_msg_max'] = flood_max
 			save_data(_config.moderation.data, data)
