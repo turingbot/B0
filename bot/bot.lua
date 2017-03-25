@@ -75,7 +75,6 @@ function create_config( )
 		"write",
 		"cleanBlackList",
 		"setnerkh",
-		"Chatter",
 		"cleanbot",
 		"warning"
 	},
