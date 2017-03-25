@@ -73,10 +73,11 @@ function create_config( )
 		"mute-time",
 		"ping",
 		"time",
-		"toti",
-		"addkick",
 		"nerkh",
 		"write",
+		"cleanBlackList",
+		"setnerkh",
+		"cleanbot",
 		"warning"
 	},
     sudo_users = {
