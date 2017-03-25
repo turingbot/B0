@@ -1736,10 +1736,10 @@ end
 if not lang then
 
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*Group Settings*🔰\n\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock arabic :_ *"..settings.lock_arabic.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Lock markdown :_ *"..settings.lock_markdown.."*\n🔐_Lock pin message :_ *"..settings.lock_pin.."*\n🔐_Lock tabchi :_ *"..settings.lock_tabchi.."*\n🔐_Bots protection :_ *"..settings.lock_bots.."*\n🔐_Lock english :_ *"..settings.english.."*\n🔐_Lock fosh :_ *"..settings.fosh.."*\n🔐_Lock ads :_ *"..settings.ads.."*\n🔐_Lock views :_ *"..settings.views.."*\n🔐_Lock emoji :_ *"..settings.emoji.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋_Group welcome :_ *"..settings.welcome.."*\n*_________________________*\n⏱Expire Date : *"..expire_date.."*\n*Group Language* : *EN*"
+ text = "🔰*Group Settings*🔰\n\n🔐_Lock ads :_ *"..settings.ads.."*\n🔐_Lock pin :_ *"..settings.lock_pin.."*\n🔐_Lock bots :_ *"..settings.lock_bots.."*\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock font :_ *"..settings.lock_markdown.."*\n🔐_Lock fosh :_ *"..settings.fosh.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock views :_ *"..settings.views.."*\n🔐_Lock emoji :_ *"..settings.emoji.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock tabchi :_ *"..settings.lock_tabchi.."*\n🔐_Lock arabic :_ *"..settings.lock_arabic.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock english :_ *"..settings.english.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋_Group welcome :_ *"..settings.welcome.."*\n*_________________________*\n⏱Expire Date : *"..expire_date.."*\n*Group Language* : *EN*"
 else
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل فحش :_ *"..settings.fosh.."*\n🔐_قفل عربی :_ *"..settings.lock_arabic.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل ایموجی :_ *"..settings.emoji.."*\n🔐_قفل هرزنامه :_ *"..settings.lock_spam.."*\n🔐_قفل انگلیسی :_ *"..settings.english.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل پیام مکرر :_ *"..settings.flood.."*\n🔐_قفل صفحات وب :_ *"..settings.lock_webpage.."*\n🔐_قفل پست ویودار :_ *"..settings.views.."*\n🔐_قفل سنجاق کردن :_ *"..settings.lock_pin.."*\n🔐_قفل ویرایش پیام :_ *"..settings.lock_edit.."*\n🔐_محافظت دربرابر ربات :_ *"..settings.lock_bots.."*\n🔐_قفل ورود ربات تبچی :_ *"..settings.lock_tabchi.."*\n🔐_حداکثر پیام مکرر :_ *"..NUM_MSG_MAX.."*\n**\n✋_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n**\n*_________________________*\n⏱تاریخ انقضا : *"..expire_date.."*\nزبان سوپرگروه : *FA*"
+ text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل ویو :_ *"..settings.views.."*\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل ریات :_ *"..settings.lock_bots.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_قفل عربی :_ *"..settings.lock_arabic.."*\n🔐_قفل اسپم :_ *"..settings.lock_spam.."*\n🔐_قفل تبچی :_ *"..settings.lock_tabchi.."*\n🔐_قفل فحش :_ *"..settings.fosh.."*\n🔐_قفل سایت :_ *"..settings.lock_webpage.."*\n🔐_قفل ویرایش :_ *"..settings.lock_edit.."*\n🔐_قفل سنجاق :_ *"..settings.lock_pin.."*\n🔐_قفل ایموجی :_ *"..settings.emoji.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل انگلیسی :_ *"..settings.english.."*\n🔐_قفل حساسیت :_ *"..settings.flood.."*\n🔐_حساسیت اسپم :_ *"..NUM_MSG_MAX.."*\n**\n✋_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n**\n*_________________________*\n⏱تاریخ انقضا : *"..expire_date.."*\nزبان سوپرگروه : *FA*"
 end
 return text
 end
@@ -1761,7 +1761,7 @@ if mute_all == "yes" then
 if not lang then
 return "*Mute All* _Is Already Enabled_" 
 elseif lang then
-return "بیصدا کردن همه فعال است"
+return "بیصدا کردن چت فعال است"
 end
 else 
 data[tostring(target)]["mutes"]["mute_all"] = "yes"
@@ -1769,7 +1769,7 @@ data[tostring(target)]["mutes"]["mute_all"] = "yes"
 if not lang then
 return "*Mute All* _Has Been Enabled_" 
 else
-return "بیصدا کردن همه فعال شد"
+return "بیصدا کردن چت فعال شد"
 end
 end
 end
@@ -1790,7 +1790,7 @@ if mute_all == "no" then
 if not lang then
 return "*Mute All* _Is Already Disabled_" 
 elseif lang then
-return "بیصدا کردن همه غیر فعال است"
+return "بیصدا کردن چت غیر فعال است"
 end
 else 
 data[tostring(target)]["mutes"]["mute_all"] = "no"
@@ -1798,7 +1798,7 @@ data[tostring(target)]["mutes"]["mute_all"] = "no"
 if not lang then
 return "*Mute All* _Has Been Disabled_" 
 else
-return "بیصدا کردن همه غیر فعال شد"
+return "بیصدا کردن چت غیر فعال شد"
 end 
 end
 end
@@ -2769,10 +2769,10 @@ end
 end
 if not lang then
 local mutes = data[tostring(target)]["mutes"] 
- text = " 🔊*Group Mute List*🔊 \n\n🔇_Mute all : _ *"..mutes.mute_all.."*\n🔇_Mute gif :_ *"..mutes.mute_gif.."*\n🔇_Mute text :_ *"..mutes.mute_text.."*\n🔇_Mute inline :_ *"..mutes.mute_inline.."*\n🔇_Mute game :_ *"..mutes.mute_game.."*\n🔇_Mute photo :_ *"..mutes.mute_photo.."*\n🔇_Mute video :_ *"..mutes.mute_video.."*\n🔇_Mute audio :_ *"..mutes.mute_audio.."*\n🔇_Mute voice :_ *"..mutes.mute_voice.."*\n🔇_Mute sticker :_ *"..mutes.mute_sticker.."*\n🔇_Mute contact :_ *"..mutes.mute_contact.."*\n🔇_Mute forward :_ *"..mutes.mute_forward.."*\n🔇_Mute location :_ *"..mutes.mute_location.."*\n🔇_Mute document :_ *"..mutes.mute_document.."*\n🔇_Mute TgService :_ *"..mutes.mute_tgservice.."*\n🔇_Mute Keyboard :_ *"..mutes.mute_keyboard.."*\n*_________________________*\n*Group Language* : *EN*"
+ text = " 🔊*Group Mute List*🔊 \n\n🔇_Mute gif :_ *"..mutes.mute_gif.."*\n🔇_Mute file :_ *"..mutes.mute_document.."*\n🔇_Mute chat : _ *"..mutes.mute_all.."*\n🔇_Mute text :_ *"..mutes.mute_text.."*\n🔇_Mute game :_ *"..mutes.mute_game.."*\n🔇_Mute photo :_ *"..mutes.mute_photo.."*\n🔇_Mute video :_ *"..mutes.mute_video.."*\n🔇_Mute audio :_ *"..mutes.mute_audio.."*\n🔇_Mute voice :_ *"..mutes.mute_voice.."*\n🔇_Mute inline :_ *"..mutes.mute_inline.."*\n🔇_Mute sticker :_ *"..mutes.mute_sticker.."*\n🔇_Mute contact :_ *"..mutes.mute_contact.."*\n🔇_Mute forward :_ *"..mutes.mute_forward.."*\n🔇_Mute Keyboard :_ *"..mutes.mute_keyboard.."*\n🔇_Mute location :_ *"..mutes.mute_location.."*\n🔇_Mute TgService :_ *"..mutes.mute_tgservice.."*\n*_________________________*\n*Group Language* : *EN*"
 else
 local mutes = data[tostring(target)]["mutes"] 
- text = " 🔊*لیست بیصدا ها*🔊 \n\n🔇_بیصدا همه : _ *"..mutes.mute_all.."*\n🔇_بیصدا تصاویر متحرک :_ *"..mutes.mute_gif.."*\n🔇_بیصدا متن :_ *"..mutes.mute_text.."*\n🔇_بیصدا کیبورد شیشه ای :_ *"..mutes.mute_inline.."*\n🔇_بیصدا بازی های تحت وب :_ *"..mutes.mute_game.."*\n🔇_بیصدا عکس :_ *"..mutes.mute_photo.."*\n🔇_بیصدا فیلم :_ *"..mutes.mute_video.."*\n🔇_بیصدا آهنگ :_ *"..mutes.mute_audio.."*\n🔇_بیصدا صدا :_ *"..mutes.mute_voice.."*\n🔇_بیصدا برچسب :_ *"..mutes.mute_sticker.."*\n🔇_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n🔇_بیصدا نقل قول :_ *"..mutes.mute_forward.."*\n🔇_بیصدا موقعیت :_ *"..mutes.mute_location.."*\n🔇_بیصدا اسناد :_ *"..mutes.mute_document.."*\n🔇_بیصدا خدمات تلگرام :_ *"..mutes.mute_tgservice.."*\n🔇_بیصدا صفحه کلید :_ *"..mutes.mute_keyboard.."*\n*_________________________*\nزبان سوپرگروه : *FA*"
+ text = " 🔊*لیست بیصدا ها*🔊 \n\n🔇_بیصدا چت : _ *"..mutes.mute_all.."*\n🔇_بیصدا گیف :_ *"..mutes.mute_gif.."*\n🔇_بیصدا متن :_ *"..mutes.mute_text.."*\n🔇_بیصدا بازی :_ *"..mutes.mute_game.."*\n🔇_بیصدا فایل :_ *"..mutes.mute_document.."*\n🔇_بیصدا کلیپ :_ *"..mutes.mute_video.."*\n🔇_بیصدا ویس :_ *"..mutes.mute_voice.."*\n🔇_بیصدا مکان :_ *"..mutes.mute_location.."*\n🔇_بیصدا اهنگ :_ *"..mutes.mute_audio.."*\n🔇_بیصدا عکس :_ *"..mutes.mute_photo.."*\n🔇_بیصدا فروارد :_ *"..mutes.mute_forward.."*\n🔇_بیصدا کیبورد :_ *"..mutes.mute_keyboard.."*\n🔇_بیصدا استیکر :_ *"..mutes.mute_sticker.."*\n🔇_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n🔇_بیصدا سرویس تلگرام :_ *"..mutes.mute_tgservice.."*\n🔇_بیصدا دکمه شیشه ای :_ *"..mutes.mute_inline.."*\n*_________________________*\nزبان سوپرگروه : *FA*"
 end
 return text
 end
@@ -2987,7 +2987,7 @@ end
 if matches[2] == "bots" or matches[2]=="ربات" then
 return lock_bots(msg, data, target)
 end
-if matches[2] == "markdown" or matches[2]=="مارکدون" then
+if matches[2] == "font" or matches[2]=="فونت" then
 return lock_markdown(msg, data, target)
 end
 if matches[2] == "webpage" or matches[2]=="سایت" then
@@ -3042,7 +3042,7 @@ end
 if matches[2] == "bots" or matches[2]=="ربات" then
 return unlock_bots(msg, data, target)
 end
-if matches[2] == "markdown" or matches[2]=="مارکدون" then
+if matches[2] == "font" or matches[2]=="فونت" then
 return unlock_markdown(msg, data, target)
 end
 if matches[2] == "webpage" or matches[2]=="سایت" then
@@ -3073,7 +3073,7 @@ end
 
 if matches[1] == "mute" and is_mod(msg) or matches[1]== "بیصدا" and is_mod(msg) then
 local target = msg.to.id
-if matches[2] == "all" or matches[2]=="همه" then
+if matches[2] == "chat" or matches[2]=="چت" then
 return mute_all(msg, data, target)
 end
 if matches[2] == "gif" or matches[2]=="گیف" then
@@ -3085,7 +3085,7 @@ end
 if matches[2] == "photo" or matches[2]=="عکس" then
 return mute_photo(msg ,data, target)
 end
-if matches[2] == "video" or matches[2]=="ویدیو" then
+if matches[2] == "video" or matches[2]=="کلیپ" then
 return mute_video(msg ,data, target)
 end
 if matches[2] == "audio" or matches[2]=="اهنگ" then
@@ -3100,13 +3100,13 @@ end
 if matches[2] == "contact" or matches[2]=="مخاطب" then
 return mute_contact(msg ,data, target)
 end
-if matches[2] == "forward" or matches[2]=="فوروارد" then
+if matches[2] == "forward" or matches[2]=="فروارد" then
 return mute_forward(msg ,data, target)
 end
 if matches[2] == "location" or matches[2]=="مکان" then
 return mute_location(msg ,data, target)
 end
-if matches[2] == "document" or matches[2]=="فایل" then
+if matches[2] == "file" or matches[2]=="فایل" then
 return mute_document(msg ,data, target)
 end
 if matches[2] == "tgservice" or matches[2]=="سرویس تلگرام" then
@@ -3125,7 +3125,7 @@ end
 
 if matches[1] == "unmute" and is_mod(msg) or matches[1]=="باصدا" and is_mod(msg) then
 local target = msg.to.id
-if matches[2] == "all" or matches[2]=="همه" then
+if matches[2] == "chat" or matches[2]=="چت" then
 return unmute_all(msg, data, target)
 end
 if matches[2] == "gif" or matches[2]=="گیف" then
@@ -3137,7 +3137,7 @@ end
 if matches[2] == "photo" or matches[2]=="عکس" then
 return unmute_photo(msg ,data, target)
 end
-if matches[2] == "video" or matches[2]=="ویدیو" then
+if matches[2] == "video" or matches[2]=="کلیپ" then
 return unmute_video(msg ,data, target)
 end
 if matches[2] == "audio" or matches[2]=="اهنگ" then
@@ -3152,13 +3152,13 @@ end
 if matches[2] == "contact" or matches[2]=="مخاطب" then
 return unmute_contact(msg ,data, target)
 end
-if matches[2] == "forward" or matches[2]=="فوروارد" then
+if matches[2] == "forward" or matches[2]=="فروارد" then
 return unmute_forward(msg ,data, target)
 end
 if matches[2] == "location" or matches[2]=="مکان" then
 return unmute_location(msg ,data, target)
 end
-if matches[2] == "document" or matches[2]=="فایل" then
+if matches[2] == "file" or matches[2]=="فایل" then
 return unmute_document(msg ,data, target)
 end
 if matches[2] == "tgservice" or matches[2]=="سرویس تلگرام" then
@@ -3314,10 +3314,12 @@ tdcli_function ({
 			local flood_max = matches[2]
 			data[tostring(chat)]['settings']['num_msg_max'] = flood_max
 			save_data(_config.moderation.data, data)
+			if not lang then
     return "_Group_ *flood* _sensitivity has been set to :_ *[ "..matches[2].." ]*"
 	else
 	return "حساسیت نسبت به پیام های مکرر تنظیم شد به : *[ "..matches[2].." ]*"
        end
+	   end
 		if matches[1]:lower() == 'clean' and is_owner(msg) or matches[1]:lower() == 'پاکسازی' and is_owner(msg) then
 			if matches[2] == 'mods' or  matches[2] == 'مدیران' then
 				if next(data[tostring(chat)]['mods']) == nil then
@@ -3536,16 +3538,16 @@ text = [[
 *!unbanall* `[username|id|reply]`
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*!lock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | markdown | mention | pin]`
+*!lock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | font | mention | pin]`
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*!unlock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | markdown | mention | pin]`
+*!unlock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | font | mention | pin]`
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
-*!mute* `[gif | photo | document | sticker | keyboard | tgservice | inline | game | video | text | forward | location | audio | voice | contact | all]`
+*!mute* `[gif | photo | file | sticker | keyboard | tgservice | inline | game | video | text | forward | location | audio | voice | contact | chat]`
 🔹در صورت بیصدد بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*!unmute* `[gif | photo | document | sticker | keyboard | tgservice | inline | game | video | text | forward | location | audio | voice | contact | all]`
+*!unmute* `[gif | photo | file | sticker | keyboard | tgservice | inline | game | video | text | forward | location | audio | voice | contact | chat]`
 🔹در صورت بیصدا نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *!set*`[rules | name | link | about | welcome]`
@@ -3688,16 +3690,16 @@ text = [[
 *ازاد کلی* `[یوزرنیم - ایدی - ریپلای]`
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*قفل* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - مارکدون - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
+*قفل* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*بازکردن* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - مارکدون - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
+*بازکردن* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
-*بیصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - ویدیو - متن - سرویس تلگرام - فوروارد - مکان - اهنگ - ویس - مخاطب - همه]`
+*بیصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]`
 🔹در صورت بیصدا بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*باصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - ویدیو - متن - سرویس تلگرام - فوروارد - مکان - اهنگ - ویس - مخاطب - همه]`
+*باصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]`
 🔹در صورت باصدا بودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *تنظیم*`[قانون - لینک - درباره گروه - نام - خوشامدگویی]`
@@ -3838,16 +3840,16 @@ text = [[
 *ازاد کلی* `[یوزرنیم - ایدی - ریپلای]`
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*قفل* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - مارکدون - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
+*قفل* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*بازکردن* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - مارکدون - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
+*بازکردن* `[لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]`
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
-*بیصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - ویدیو - متن - سرویس تلگرام - فوروارد - مکان - اهنگ - ویس - مخاطب - همه]`
+*بیصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]`
 🔹در صورت بیصدا بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*باصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - ویدیو - متن - سرویس تلگرام - فوروارد - مکان - اهنگ - ویس - مخاطب - همه]`
+*باصدا* `[گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]`
 🔹در صورت باصدا بودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *تنظیم*`[قانون - لینک - درباره گروه - نام - خوشامدگویی]`
