@@ -14,6 +14,7 @@ JSON = (loadfile "./libs/dkjson.lua")()
 local lgi = require ('lgi')
 local notify = lgi.require('Notify')
 notify.init ("Telegram updates")
+--run_bash("~/BDReborn/clearcache.sh")
 chats = {}
 
 
@@ -52,9 +53,33 @@ function match_plugins(msg)
 	end
 end
 
+-- Apply plugin.pre_process function
+function pre_process_msg(msg)
+  for name,plugin in pairs(plugins) do
+    if plugin.pre_process and msg then
+      print('Preprocess', name)
+      result = plugin.pre_process(msg)
+    end
+  end
+   return result
+end
+
 function save_config( )
 	serialize_to_file(_config, './data/config.lua')
 	print ('saved config into ./data/config.lua')
+end
+
+function whoami()
+	local usr = io.popen("whoami"):read('*a')
+	usr = string.gsub(usr, '^%s+', '')
+	usr = string.gsub(usr, '%s+$', '')
+	usr = string.gsub(usr, '[\n\r]+', ' ') 
+	if usr:match("^root$") then
+		tcpath = '/root/.telegram-cli'
+	elseif not usr:match("^root$") then
+		tcpath = '/home/'..usr..'/.telegram-cli'
+	end
+  print('>> Download Path = '..tcpath)
 end
 
 function create_config( )
@@ -66,8 +91,6 @@ function create_config( )
 		"msg-checks",
 		"plugins",
 		"tools",
-		"fun",
-		"info",
 		"del",
 		"mute-time",
 		"ping",
@@ -108,6 +131,7 @@ function load_config( )
 	end
 	return config
 end
+whoami()
 plugins = {}
 _config = load_config()
 
@@ -182,14 +206,6 @@ local function is_plugin_disabled_on_chat(plugin_name, receiver)
 end
 
 function match_plugin(plugin, plugin_name, msg)
-	if plugin.pre_process then
-        --If plugin is for privileged users only
-		local result = plugin.pre_process(msg)
-		if result then
-			print("pre process: ", plugin_name)
-        -- tdcli.sendMessage(msg.chat_id_, "", 0, result, 0, "md")
-		end
-	end
 	for k, pattern in pairs(plugin.patterns) do
 		matches = match_pattern(pattern, msg.text or msg.media.caption)
 		if matches then
@@ -292,30 +308,24 @@ load_plugins()
 		else
 			msg.from.phone = false
 		end
+     False = false
 		match_plugins(msg)
-
+pre_process_msg(msg)
 	end
 	tdcli_function ({ ID = "GetUser", user_id_ = data.sender_user_id_ }, get_user, nil)
 -------------End-------------
 
 end
 
-function whoami()
-	local usr = io.popen("id -un"):read('*a')
-	usr = string.gsub(usr, '^%s+', '')
-	usr = string.gsub(usr, '%s+$', '')
-	usr = string.gsub(usr, '[\n\r]+', ' ') 
-	if usr:match("^root$") then
-		tcpath = '/root/.telegram-cli'
-	elseif not usr:match("^root$") then
-		tcpath = '/home/'..usr..'/.telegram-cli'
-	end
-end
 function file_cb(msg)
 	if msg.content_.ID == "MessagePhoto" then
 		photo_id = ''
 		local function get_cb(arg, data)
+		if data.content_.photo_.sizes_[2] then
 			photo_id = data.content_.photo_.sizes_[2].photo_.id_
+			else
+			photo_id = data.content_.photo_.sizes_[1].photo_.id_
+			end
 			tdcli.downloadFile(photo_id, dl_cb, nil)
 		end
 		tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = msg.id_ }, get_cb, nil)
@@ -368,7 +378,6 @@ function file_cb(msg)
 end
 end
 function tdcli_update_callback (data)
-	whoami()
 	if (data.ID == "UpdateNewMessage") then
 
 		local msg = data.message_
@@ -386,15 +395,13 @@ function tdcli_update_callback (data)
 				do_notify (chat.title_, msg.content_.ID)
 			end
 		end
-
+   if msg_valid(msg) then
 		var_cb(msg, msg)
 		file_cb(msg)
 	if msg.content_.ID == "MessageText" then
-		if msg_valid(msg) then
 			msg.text = msg.content_.text_
 			msg.edited = false
 			msg.pinned = false
-		end
 	elseif msg.content_.ID == "MessagePinMessage" then
 		msg.pinned = true
 	elseif msg.content_.ID == "MessagePhoto" then
@@ -428,24 +435,20 @@ function tdcli_update_callback (data)
 	elseif msg.content_.ID == "MessageGame" then
 		msg.game_ = true
 	elseif msg.content_.ID == "MessageChatAddMembers" then
-		if msg_valid(msg) then
 			for i=0,#msg.content_.members_ do
 				msg.adduser = msg.content_.members_[i].id_
-			end
 		end
 	elseif msg.content_.ID == "MessageChatJoinByLink" then
-		if msg_valid(msg) then
 			msg.joinuser = msg.sender_user_id_
-		end
 	elseif msg.content_.ID == "MessageChatDeleteMember" then
-		if msg_valid(msg) then
 			msg.deluser = true
-		end
 	end
 	if msg.content_.photo_ then
 		return false
 	end
+end
 	elseif data.ID == "UpdateMessageContent" then  
+print(serpent.block(data))
 		cmsg = data
 		local function edited_cb(arg, data)
 			msg = data
@@ -457,7 +460,9 @@ function tdcli_update_callback (data)
 				msg.media.caption = cmsg.new_content_.caption_
 			end
 			msg.edited = true
+      if msg_valid(msg) then
 			var_cb(msg, msg)
+         end
 		end
 	tdcli_function ({ ID = "GetMessage", chat_id_ = data.chat_id_, message_id_ = data.message_id_ }, edited_cb, nil)
 	elseif data.ID == "UpdateFile" then
@@ -469,4 +474,3 @@ function tdcli_update_callback (data)
 		tdcli_function ({ID="GetChats", offset_order_="9223372036854775807", offset_chat_id_=0, limit_=20}, dl_cb, nil)    
 	end
 end
-
