@@ -1741,6 +1741,13 @@ else
 local settings = data[tostring(target)]["settings"] 
  text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل ویو :_ *"..settings.views.."*\n🔐_قفل ریات :_ *"..settings.lock_bots.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل اسپم :_ *"..settings.lock_spam.."*\n🔐_قفل عربی :_ *"..settings.lock_arabic.."*\n🔐_قفل سایت :_ *"..settings.lock_webpage.."*\n🔐_قفل تبچی :_ *"..settings.lock_tabchi.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_قفل فحش :_ *"..settings.fosh.."*\n🔐_قفل سنجاق :_ *"..settings.lock_pin.."*\n🔐_قفل ایموجی :_ *"..settings.emoji.."*\n🔐_قفل ویرایش :_ *"..settings.lock_edit.."*\n🔐_قفل انگلیسی :_ *"..settings.english.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل حساسیت :_ *"..settings.flood.."*\n🔐_حساسیت اسپم :_ *"..NUM_MSG_MAX.."*\n**\n✋_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n**\n*_________________________*\n⏱تاریخ انقضا : *"..expire_date.."*\nزبان سوپرگروه : *FA*"
 end
+if not lang then
+text = string.gsub(text, "yes", "✅")
+ text =  string.gsub(text, "no", "☑️")
+ else
+ text = string.gsub(text, "yes", "✅")
+ text =  string.gsub(text, "no", "☑️")
+ end
 return text
 end
 --------Mutes---------
@@ -2774,6 +2781,13 @@ else
 local mutes = data[tostring(target)]["mutes"] 
  text = " 🔊*لیست بیصدا ها*🔊 \n\n🔇_بیصدا چت : _ *"..mutes.mute_all.."*\n🔇_بیصدا گیف :_ *"..mutes.mute_gif.."*\n🔇_بیصدا متن :_ *"..mutes.mute_text.."*\n🔇_بیصدا بازی :_ *"..mutes.mute_game.."*\n🔇_بیصدا فایل :_ *"..mutes.mute_document.."*\n🔇_بیصدا کلیپ :_ *"..mutes.mute_video.."*\n🔇_بیصدا ویس :_ *"..mutes.mute_voice.."*\n🔇_بیصدا مکان :_ *"..mutes.mute_location.."*\n🔇_بیصدا اهنگ :_ *"..mutes.mute_audio.."*\n🔇_بیصدا عکس :_ *"..mutes.mute_photo.."*\n🔇_بیصدا فروارد :_ *"..mutes.mute_forward.."*\n🔇_بیصدا کیبورد :_ *"..mutes.mute_keyboard.."*\n🔇_بیصدا استیکر :_ *"..mutes.mute_sticker.."*\n🔇_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n🔇_بیصدا سرویس تلگرام :_ *"..mutes.mute_tgservice.."*\n🔇_بیصدا دکمه شیشه ای :_ *"..mutes.mute_inline.."*\n*_________________________*\nزبان سوپرگروه : *FA*"
 end
+if not lang then
+text = string.gsub(text, "yes", "✅")
+ text =  string.gsub(text, "no", "☑️")
+ else
+ text = string.gsub(text, "yes", "✅")
+ text =  string.gsub(text, "no", "☑️")
+ end
 return text
 end
 
