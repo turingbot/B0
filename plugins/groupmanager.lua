@@ -38,7 +38,6 @@ end
 		  lock_arabic = 'no',
 		  english = 'no',
 		  views = 'no',
-		  emoji = 'no',
 		  ads = 'no',
 		  fosh = 'no',
           welcome = 'no'
@@ -890,64 +889,6 @@ end
 end
 end
 
----------------Lock Emoji-------------------
-local function lock_emoji(msg, data, target) 
-local hash = "gp_lang:"..msg.to.id
-local lang = redis:get(hash)
-if not is_mod(msg) then
-if not lang then
- return "_You're Not_ *Moderator*"
-else
- return "شما مدیر گروه نمیباشید"
-end
-end
-
-local lock_emoji = data[tostring(target)]["settings"]["emoji"] 
-if lock_emoji == "yes" then
-if not lang then
- return "*Emoji* _Posting Is Already Locked_"
-elseif lang then
- return "ارسال نوشته امجودار در گروه هم اکنون ممنوع است"
-end
-else
-data[tostring(target)]["settings"]["emoji"] = "yes"
-save_data(_config.moderation.data, data) 
-if not lang then
- return "*Emoji* _Posting Has Been Locked_"
-else
- return "ارسال نوشته امجودار در گروه ممنوع شد"
-end
-end
-end
-
-local function unlock_emoji(msg, data, target)
-local hash = "gp_lang:"..msg.to.id
-local lang = redis:get(hash)
- if not is_mod(msg) then
-if not lang then
-return "_You're Not_ *Moderator*"
-else
- return "شما مدیر گروه نمیباشید"
-end 
-end
-
-local lock_emoji = data[tostring(target)]["settings"]["emoji"]
-if lock_emoji == "no" then
-if not lang then
- return "*Emoji* _Posting Is Not Locked_" 
-elseif lang then
- return "ارسال نوشته امجودار در گروه ممنوع نمیباشد"
-end
-else 
-data[tostring(target)]["settings"]["emoji"] = "no" save_data(_config.moderation.data, data) 
-if not lang then
- return "*Emoji* _Posting Has Been Unlocked_" 
-else
- return "ارسال نوشته امجودار در گروه آزاد شد"
-end
-end
-end
-
 ---------------Lock Tag-------------------
 local function lock_tag(msg, data, target) 
 local hash = "gp_lang:"..msg.to.id
@@ -1671,12 +1612,6 @@ end
 end
 
 if data[tostring(target)]["settings"] then		
-if not data[tostring(target)]["settings"]["emoji"] then			
-data[tostring(target)]["settings"]["emoji"] = "yes"		
-end
-end
-
-if data[tostring(target)]["settings"] then		
 if not data[tostring(target)]["settings"]["english"] then			
 data[tostring(target)]["settings"]["english"] = "yes"		
 end
@@ -1736,10 +1671,10 @@ end
 if not lang then
 
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*Group Settings*🔰\n\n🔐_Lock ads :_ *"..settings.ads.."*\n🔐_Lock pin :_ *"..settings.lock_pin.."*\n🔐_Lock bots :_ *"..settings.lock_bots.."*\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock font :_ *"..settings.lock_markdown.."*\n🔐_Lock fosh :_ *"..settings.fosh.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock views :_ *"..settings.views.."*\n🔐_Lock emoji :_ *"..settings.emoji.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock tabchi :_ *"..settings.lock_tabchi.."*\n🔐_Lock arabic :_ *"..settings.lock_arabic.."*\n🔐_Lock english :_ *"..settings.english.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋_Group welcome :_ *"..settings.welcome.."*\n*_________________________*\n⏱Expire Date : *"..expire_date.."*\n*Group Language* : *EN*"
+ text = "🔰*Group Settings*🔰\n\n🔐_Lock pin :_ *"..settings.lock_pin.."*\n🔐_Lock ads :_ *"..settings.ads.."*\n🔐_Lock edit :_ *"..settings.lock_edit.."*\n🔐_Lock font :_ *"..settings.lock_markdown.."*\n🔐_Lock fosh :_ *"..settings.fosh.."*\n🔐_Lock tags :_ *"..settings.lock_tag.."*\n🔐_Lock bots :_ *"..settings.lock_bots.."*\n🔐_Lock links :_ *"..settings.lock_link.."*\n🔐_Lock flood :_ *"..settings.flood.."*\n🔐_Lock spam :_ *"..settings.lock_spam.."*\n🔐_Lock views :_ *"..settings.views.."*\n🔐_Lock tabchi :_ *"..settings.lock_tabchi.."*\n🔐_Lock arabic :_ *"..settings.lock_arabic.."*\n🔐_Lock english :_ *"..settings.english.."*\n🔐_Lock mention :_ *"..settings.lock_mention.."*\n🔐_Lock webpage :_ *"..settings.lock_webpage.."*\n🔐_Flood sensitivity :_ *"..NUM_MSG_MAX.."*\n✋_Group welcome :_ *"..settings.welcome.."*\n*_________________________*\n⏱Expire Date : *"..expire_date.."*\n*Group Language* : *EN*"
 else
 local settings = data[tostring(target)]["settings"] 
- text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل ویو :_ *"..settings.views.."*\n🔐_قفل ریات :_ *"..settings.lock_bots.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل اسپم :_ *"..settings.lock_spam.."*\n🔐_قفل عربی :_ *"..settings.lock_arabic.."*\n🔐_قفل سایت :_ *"..settings.lock_webpage.."*\n🔐_قفل تبچی :_ *"..settings.lock_tabchi.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_قفل فحش :_ *"..settings.fosh.."*\n🔐_قفل سنجاق :_ *"..settings.lock_pin.."*\n🔐_قفل ایموجی :_ *"..settings.emoji.."*\n🔐_قفل ویرایش :_ *"..settings.lock_edit.."*\n🔐_قفل انگلیسی :_ *"..settings.english.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل حساسیت :_ *"..settings.flood.."*\n🔐_حساسیت اسپم :_ *"..NUM_MSG_MAX.."*\n**\n✋_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n**\n*_________________________*\n⏱تاریخ انقضا : *"..expire_date.."*\nزبان سوپرگروه : *FA*"
+ text = "🔰*تنظیمات گروه*🔰\n\n🔐_قفل تگ :_ *"..settings.lock_tag.."*\n🔐_قفل ویو :_ *"..settings.views.."*\n🔐_قفل ربات :_ *"..settings.lock_bots.."*\n🔐_قفل لینک :_ *"..settings.lock_link.."*\n🔐_قفل اسپم :_ *"..settings.lock_spam.."*\n🔐_قفل عربی :_ *"..settings.lock_arabic.."*\n🔐_قفل تبچی :_ *"..settings.lock_tabchi.."*\n🔐_قفل فونت :_ *"..settings.lock_markdown.."*\n🔐_قفل سایت :_ *"..settings.lock_webpage.."*\n🔐_قفل فحش :_ *"..settings.fosh.."*\n🔐_قفل سنجاق :_ *"..settings.lock_pin.."*\n🔐_قفل تبلیغات :_ *"..settings.ads.."*\n🔐_قفل ویرایش :_ *"..settings.lock_edit.."*\n🔐_قفل انگلیسی :_ *"..settings.english.."*\n🔐_قفل فراخوانی :_ *"..settings.lock_mention.."*\n🔐_قفل حساسیت :_ *"..settings.flood.."*\n🔐_حساسیت اسپم :_ *"..NUM_MSG_MAX.."*\n**\n✋_پیام خوشآمد گویی :_ *"..settings.welcome.."*\n**\n*_________________________*\n⏱تاریخ انقضا : *"..expire_date.."*\nزبان سوپرگروه : *FA*"
 end
 if not lang then
 text = string.gsub(text, "yes", "✅")
@@ -2776,10 +2711,10 @@ end
 end
 if not lang then
 local mutes = data[tostring(target)]["mutes"] 
- text = " 🔊*Group Mute List*🔊 \n\n🔇_Mute gif :_ *"..mutes.mute_gif.."*\n🔇_Mute file :_ *"..mutes.mute_document.."*\n🔇_Mute text :_ *"..mutes.mute_text.."*\n🔇_Mute chat : _ *"..mutes.mute_all.."*\n🔇_Mute game :_ *"..mutes.mute_game.."*\n🔇_Mute photo :_ *"..mutes.mute_photo.."*\n🔇_Mute video :_ *"..mutes.mute_video.."*\n🔇_Mute audio :_ *"..mutes.mute_audio.."*\n🔇_Mute voice :_ *"..mutes.mute_voice.."*\n🔇_Mute inline :_ *"..mutes.mute_inline.."*\n🔇_Mute sticker :_ *"..mutes.mute_sticker.."*\n🔇_Mute contact :_ *"..mutes.mute_contact.."*\n🔇_Mute forward :_ *"..mutes.mute_forward.."*\n🔇_Mute location :_ *"..mutes.mute_location.."*\n🔇_Mute Keyboard :_ *"..mutes.mute_keyboard.."*\n🔇_Mute TgService :_ *"..mutes.mute_tgservice.."*\n*_________________________*\n*Group Language* : *EN*"
+ text = " 🔊*Group Mute List*🔊 \n\n🔇_Mute gif :_ *"..mutes.mute_gif.."*\n🔇_Mute file :_ *"..mutes.mute_document.."*\n🔇_Mute text :_ *"..mutes.mute_text.."*\n🔇_Mute chat : _ *"..mutes.mute_all.."*\n🔇_Mute voice :_ *"..mutes.mute_voice.."*\n🔇_Mute inline :_ *"..mutes.mute_inline.."*\n🔇_Mute video :_ *"..mutes.mute_video.."*\n🔇_Mute audio :_ *"..mutes.mute_audio.."*\n🔇_Mute game :_ *"..mutes.mute_game.."*\n🔇_Mute photo :_ *"..mutes.mute_photo.."*\n🔇_Mute sticker :_ *"..mutes.mute_sticker.."*\n🔇_Mute contact :_ *"..mutes.mute_contact.."*\n🔇_Mute forward :_ *"..mutes.mute_forward.."*\n🔇_Mute location :_ *"..mutes.mute_location.."*\n🔇_Mute Keyboard :_ *"..mutes.mute_keyboard.."*\n🔇_Mute TgService :_ *"..mutes.mute_tgservice.."*\n*_________________________*\n*Group Language* : *EN*"
 else
 local mutes = data[tostring(target)]["mutes"] 
- text = " 🔊*لیست بیصدا ها*🔊 \n\n🔇_بیصدا چت : _ *"..mutes.mute_all.."*\n🔇_بیصدا گیف :_ *"..mutes.mute_gif.."*\n🔇_بیصدا متن :_ *"..mutes.mute_text.."*\n🔇_بیصدا بازی :_ *"..mutes.mute_game.."*\n🔇_بیصدا فایل :_ *"..mutes.mute_document.."*\n🔇_بیصدا کلیپ :_ *"..mutes.mute_video.."*\n🔇_بیصدا ویس :_ *"..mutes.mute_voice.."*\n🔇_بیصدا مکان :_ *"..mutes.mute_location.."*\n🔇_بیصدا اهنگ :_ *"..mutes.mute_audio.."*\n🔇_بیصدا عکس :_ *"..mutes.mute_photo.."*\n🔇_بیصدا فروارد :_ *"..mutes.mute_forward.."*\n🔇_بیصدا کیبورد :_ *"..mutes.mute_keyboard.."*\n🔇_بیصدا استیکر :_ *"..mutes.mute_sticker.."*\n🔇_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n🔇_بیصدا سرویس تلگرام :_ *"..mutes.mute_tgservice.."*\n🔇_بیصدا دکمه شیشه ای :_ *"..mutes.mute_inline.."*\n*_________________________*\nزبان سوپرگروه : *FA*"
+ text = " 🔊*لیست بیصدا ها*🔊 \n\n🔇_بیصدا متن :_ *"..mutes.mute_text.."*\n🔇_بیصدا بازی :_ *"..mutes.mute_game.."*\n🔇_بیصدا فایل :_ *"..mutes.mute_document.."*\n🔇_بیصدا گیف :_ *"..mutes.mute_gif.."*\n🔇_بیصدا چت : _ *"..mutes.mute_all.."*\n🔇_بیصدا مکان :_ *"..mutes.mute_location.."*\n🔇_بیصدا اهنگ :_ *"..mutes.mute_audio.."*\n🔇_بیصدا ویس :_ *"..mutes.mute_voice.."*\n🔇_بیصدا کلیپ :_ *"..mutes.mute_video.."*\n🔇_بیصدا عکس :_ *"..mutes.mute_photo.."*\n🔇_بیصدا فروارد :_ *"..mutes.mute_forward.."*\n🔇_بیصدا کیبورد :_ *"..mutes.mute_keyboard.."*\n🔇_بیصدا استیکر :_ *"..mutes.mute_sticker.."*\n🔇_بیصدا مخاطب :_ *"..mutes.mute_contact.."*\n🔇_بیصدا دکمه شیشه ای :_ *"..mutes.mute_inline.."*\n🔇_بیصدا سرویس تلگرام :_ *"..mutes.mute_tgservice.."*\n*_________________________*\nزبان سوپرگروه : *FA*"
 end
 if not lang then
 text = string.gsub(text, "yes", "✅")
@@ -3016,9 +2951,6 @@ end
 if matches[2] == "views" or matches[2]=="ویو" then
 return lock_views(msg, data, target)
 end
-if matches[2] == "emoji" or matches[2]=="ایموجی" then
-return lock_emoji(msg, data, target)
-end
 if matches[2] == "fosh" or matches[2]=="فحش" then
 return lock_fosh(msg, data, target)
 end
@@ -3070,9 +3002,6 @@ return unlock_english(msg, data, target)
 end
 if matches[2] == "views" or matches[2]=="ویو" then
 return unlock_views(msg, data, target)
-end
-if matches[2] == "emoji" or matches[2]=="ایموجی" then
-return unlock_emoji(msg, data, target)
 end
 if matches[2] == "fosh" or matches[2]=="فحش" then
 return unlock_fosh(msg, data, target)
@@ -3554,10 +3483,10 @@ text = [[
 *!unbanall* `[username|id|reply]`
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*!lock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | font | mention | pin]`
+*!lock* `[link | tag | edit | arabic | webpage | view | ads | english | fosh | tabchi | bots | spam | flood | font | mention | pin]`
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*!unlock* `[link | tag | edit | arabic | webpage | view | ads | english | emoji | fosh | tabchi | bots | spam | flood | font | mention | pin]`
+*!unlock* `[link | tag | edit | arabic | webpage | view | ads | english | fosh | tabchi | bots | spam | flood | font | mention | pin]`
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *!mute* `[gif | photo | file | sticker | keyboard | tgservice | inline | game | video | text | forward | location | audio | voice | contact | chat]`
@@ -3706,10 +3635,10 @@ text = [[
 *ازاد کلی [یوزرنیم - ایدی - ریپلای]*
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*قفل [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
+*قفل [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*بازکردن [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
+*بازکردن [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *بیصدا [گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]*
@@ -3856,10 +3785,10 @@ text = [[
 *ازاد کلی [یوزرنیم - ایدی - ریپلای]*
 🔹ازاد کردن کاربر از گروه و تمام گروه های ربات
 
-*قفل [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
+*قفل [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - فحش - تبلیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
 🔹در صورت قفل بودن فعالیت ها, ربات آنهارا حذف خواهد کرد
 
-*بازکردن [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - ایموجی - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
+*بازکردن [لینک - تگ - ویرایش - عربی - انگلیسی - ویو - فحش - تلبیغات - سایت - فونت - ربات - تبچی - اسپم - حساسیت - فراخوانی - سنجاق]*
 🔹در صورت قفل نبودن فعالیت ها, ربات آنهارا حذف نخواهد کرد
 
 *بیصدا [گیف - عکس - فایل - استیکر - بازی - کیبورد - دکمه شیشه ای - کلیپ - متن - سرویس تلگرام - فروارد - مکان - اهنگ - ویس - مخاطب - چت]*
