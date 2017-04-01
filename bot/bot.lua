@@ -99,7 +99,7 @@ function create_config( )
 		"cleanBlackList",
 		"setnerkh",
 		"cleanbot",
-		"warning"
+		"autodelcache"
 	},
     sudo_users = {
     151499613,
