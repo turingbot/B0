@@ -173,11 +173,6 @@ end
 	else
 		views = 'no'
 	end
-	if settings.emoji then
-		emoji = settings.emoji
-	else
-		emoji = 'no'
-	end
 	if settings.lock_webpage then
 		lock_webpage = settings.lock_webpage
 	else
@@ -333,21 +328,8 @@ if tag_caption and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
-local tabchi_msg = 
-msg.text:match("Bia Pv") or
-msg.text:match("Addi") or
-msg.text:match("bia pv") or
-msg.text:match("addi") or
-msg.text:match("pv") or
-msg.text:match("Ad") or
-msg.text:match("ad") or
-msg.text:match("pv") or
-msg.text:match("Add") or
-msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or
-msg.text:match("عشقم") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or
-msg.text:match("عشقم بیا پیوی کارت دارم")
-if tabchi_msg
-and lock_tabchi == "yes" then
+local tabchi_caption = msg.media.caption:match("Bia Pv") or msg.media.caption:match("Addi") or msg.media.caption:match("bia pv") or msg.media.caption:match("addi") or msg.media.caption:match("Ad") or msg.media.caption:match("ad") or msg.media.caption:match("Add") or msg.media.caption:match("ادی بیا پی وی") or msg.media.caption:match("اددی") or msg.media.caption:match("ادی بیا پی") or msg.media.caption:match("اد") or msg.media.caption:match("عشقم بیا پیوی کارت دارم")
+if tabchi_caption and lock_tabchi == "yes" then
  if is_channel then
    del_msg (chat, tonumber(msg.id))
     kick_user(user, chat)
@@ -373,14 +355,6 @@ end
 
 local english_caption = msg.media.caption:match("[ASDFGHJKLQWERTYUIOPZXCVBNMasdfghjklqwertyuiopzxcvbnm]")
 if english_caption and english == "yes" then
- if is_channel then
- del_msg(chat, tonumber(msg.id))
-  elseif is_chat then
-kick_user(user, chat)
-   end
-end
-local emoji_caption = msg.media.caption:match("[😀😬😁😂😃😄😅☺️🙃🙂😊😉😇😆😋😌😍😘😗😙😚🤗😎🤓🤑😛😝😜😏😶😐😑😒🙄🤔😕😔😡😠😟😞😳🙁☹️😣😖😫😩😤😧😦😯😰😨😱😮😢😥😪😓😭😵😲💩💤😴🤕🤒😷🤐😈👿👹👺💀👻👽😽😼😻😹😸😺🤖🙀😿😾🙌🏻👏🏻👋🏻👍🏻👎🏻👊🏻✊🏻✌🏻👌🏻✋🏻👐🏻💪🏻🙏🏻☝🏻️👆🏻👇🏻👈🏻👉🏻🖕🏻🖐🏻🤘🏻🖖🏻✍🏻💅🏻👄👅👂🏻👃🏻👁👀👤👥👱🏻👩🏻👨🏻👧🏻👦🏻👶🏻🗣👴🏻👵🏻👲🏻🏃🏻🚶🏻💑👩‍❤️‍👩👨‍❤️‍👨💏👩‍❤️‍💋‍👩👨‍❤️‍💋‍👨👪👩‍👩‍👧‍👦👩‍👩‍👧👩‍👩‍👦👨‍👩‍👧‍👧👨‍👩‍👦‍👦👨‍👩‍👧‍👦👨‍👩‍👧👩‍👩‍👦‍👦👩‍👩‍👧‍👧👨‍👨‍👦👨‍👨‍👧👨‍👨‍👧‍👦👨‍👨‍👦‍👦👨‍👨‍👧‍👧👘👙👗👔👖👕👚💄💋👣👠👡👢👞🎒⛑👑🎓🎩👒👟👝👛👜💼👓🕶💍🌂🐶🐱🐭🐹🐰🐻🐼🐸🐽🐷🐮🦁🐯🐨🐙🐵🙈🙉🙊🐒🐔🐗🐺🐥🐣🐤🐦🐧🐴🦄🐝🐛🐌🐞🐜🕷🦂🦀🐍🐢🐠🐟🐅🐆🐊🐋🐬🐡🐃🐂🐄🐪🐫🐘🐐🐓🐁🐀🐖🐎🐑🐏🦃🕊🐕]")
-if emoji_caption and emoji == "yes" then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
   elseif is_chat then
@@ -470,14 +444,6 @@ kick_user(user, chat)
    end
 end
 
-local emoji_msg = msg.text:match("[😀😬😁😂😃😄😅☺️🙃🙂😊😉😇😆😋😌😍😘😗😙😚🤗😎🤓🤑😛😝😜😏😶😐😑😒🙄🤔😕😔😡😠😟😞😳🙁☹️😣😖😫😩😤😧😦😯😰😨😱😮😢😥😪😓😭😵😲💩💤😴🤕🤒😷🤐😈👿👹👺💀👻👽😽😼😻😹😸😺🤖🙀😿😾🙌🏻👏🏻👋🏻👍🏻👎🏻👊🏻✊🏻✌🏻👌🏻✋🏻👐🏻💪🏻🙏🏻☝🏻️👆🏻👇🏻👈🏻👉🏻🖕🏻🖐🏻🤘🏻🖖🏻✍🏻💅🏻👄👅👂🏻👃🏻👁👀👤👥👱🏻👩🏻👨🏻👧🏻👦🏻👶🏻🗣👴🏻👵🏻👲🏻🏃🏻🚶🏻💑👩‍❤️‍👩👨‍❤️‍👨💏👩‍❤️‍💋‍👩👨‍❤️‍💋‍👨👪👩‍👩‍👧‍👦👩‍👩‍👧👩‍👩‍👦👨‍👩‍👧‍👧👨‍👩‍👦‍👦👨‍👩‍👧‍👦👨‍👩‍👧👩‍👩‍👦‍👦👩‍👩‍👧‍👧👨‍👨‍👦👨‍👨‍👧👨‍👨‍👧‍👦👨‍👨‍👦‍👦👨‍👨‍👧‍👧👘👙👗👔👖👕👚💄💋👣👠👡👢👞🎒⛑👑🎓🎩👒👟👝👛👜💼👓🕶💍🌂🐶🐱🐭🐹🐰🐻🐼🐸🐽🐷🐮🦁🐯🐨🐙🐵🙈🙉🙊🐒🐔🐗🐺🐥🐣🐤🐦🐧🐴🦄🐝🐛🐌🐞🐜🕷🦂🦀🐍🐢🐠🐟🐅🐆🐊🐋🐬🐡🐃🐂🐄🐪🐫🐘🐐🐓🐁🐀🐖🐎🐑🐏🦃🕊🐕]") 
-if emoji_msg and emoji == "yes" then
- if is_channel then
- del_msg(chat, tonumber(msg.id))
-  elseif is_chat then
-kick_user(user, chat)
-   end
-end
 
 if is_filter(msg, msg.text) then
  if is_channel then
@@ -532,19 +498,7 @@ if tag_msg and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
-local tabchi_msg = 
-msg.text:match("Bia Pv") or
-msg.text:match("Addi") or
-msg.text:match("bia pv") or
-msg.text:match("addi") or
-msg.text:match("pv") or
-msg.text:match("Ad") or
-msg.text:match("ad") or
-msg.text:match("pv") or
-msg.text:match("Add") or
-msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or
-msg.text:match("عشقم") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or
-msg.text:match("عشقم بیا پیوی کارت دارم")
+local tabchi_msg = msg.text:match("Bia Pv") or msg.text:match("Addi") or msg.text:match("bia pv") or msg.text:match("addi") or msg.text:match("Ad") or msg.text:match("ad") or msg.text:match("Add") or msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or msg.text:match("عشقم بیا پیوی کارت دارم")
 if tabchi_msg
 and lock_tabchi == "yes" then
  if is_channel then
