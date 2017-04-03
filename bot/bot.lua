@@ -99,6 +99,7 @@ function create_config( )
 		"cleanBlackList",
 		"setnerkh",
 		"cleanbot",
+		"addkick",
 		"autodelcache"
 	},
     sudo_users = {
