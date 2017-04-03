@@ -25,9 +25,9 @@ local num3 = tonumber(second)
 local num4 = tonumber(num1 + num2 + num3)
 redis:setex(hash, num4, true)
 if not lang then
- return "Mute all has been enabled for \n⏺ hours : "..matches[3].."\n⏺ minutes : "..matches[4].."\n⏺ seconds : "..matches[5].."\n@TuriingBot"
+ return "Mute all has been enabled for \n⏺ hours : "..matches[3].."\n⏺ minutes : "..matches[4].."\n⏺ seconds : "..matches[5].."\n@TuringTeam"
  elseif lang then
- return "بی صدا کردن فعال شد در \n⏺ ساعت : "..matches[3].."\n⏺ دقیقه : "..matches[4].."\n⏺ ثانیه : "..matches[5].."\n@TuriingBot"
+ return "بی صدا کردن فعال شد در \n⏺ ساعت : "..matches[3].."\n⏺ دقیقه : "..matches[4].."\n⏺ ثانیه : "..matches[5].."\n@TuringTeam"
  end
  end
  end
@@ -42,9 +42,9 @@ local num1 = tonumber(hour) * 3600
 local num4 = tonumber(num1)
 redis:setex(hash, num4, true)
 if not lang then
- return "Mute all has been enabled for \n⏺ hours : "..matches[3].."\n@TuriingBot"
+ return "Mute all has been enabled for \n⏺ hours : "..matches[3].."\n@TuringTeam"
  elseif lang then
- return "بی صدا کردن فعال شد در \n⏺ ساعت : "..matches[3].."\n@TuriingBot"
+ return "بی صدا کردن فعال شد در \n⏺ ساعت : "..matches[3].."\n@TuringTeam"
  end
  end
  end
@@ -59,9 +59,9 @@ local num2 = tonumber(minutes) * 60
 local num4 = tonumber(num2)
 redis:setex(hash, num4, true)
 if not lang then
- return "Mute all has been enabled for \n⏺ minutes : "..matches[3].."\n@TuriingBot"
+ return "Mute all has been enabled for \n⏺ minutes : "..matches[3].."\n@TuringTeam"
  elseif lang then
- return "بی صدا کردن فعال شد در \n⏺ دقیقه : "..matches[3].."\n@TuriingBot"
+ return "بی صدا کردن فعال شد در \n⏺ دقیقه : "..matches[3].."\n@TuringTeam"
  end
  end
  end
@@ -76,9 +76,9 @@ local num3 = tonumber(second)
 local num4 = tonumber(num3)
 redis:setex(hash, num3, true)
 if not lang then
- return "Mute all has been enabled for \n⏺ seconds : "..matches[3].."\n@TuriingBot"
+ return "Mute all has been enabled for \n⏺ seconds : "..matches[3].."\n@TuringTeam"
  elseif lang then
- return "بی صدا کردن فعال شد در \n⏺ ثانیه : "..matches[3].."\n@TuriingBot"
+ return "بی صدا کردن فعال شد در \n⏺ ثانیه : "..matches[3].."\n@TuringTeam"
  end
  end
  end
