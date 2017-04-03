@@ -178,11 +178,6 @@ end
 	else
 		lock_webpage = 'no'
 	end
-	if settings.lock_tabchi then
-		lock_tabchi = settings.lock_tabchi
-	else
-		lock_tabchi = 'no'
-	end
   if msg.adduser or msg.joinuser or msg.deluser then
   if mute_tgservice == "yes" then
 del_msg(chat, tonumber(msg.id))
@@ -328,14 +323,7 @@ if tag_caption and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
-local tabchi_caption = msg.media.caption:match("Bia Pv") or msg.media.caption:match("Addi") or msg.media.caption:match("bia pv") or msg.media.caption:match("addi") or msg.media.caption:match("Ad") or msg.media.caption:match("ad") or msg.media.caption:match("Add") or msg.media.caption:match("ادی بیا پی وی") or msg.media.caption:match("اددی") or msg.media.caption:match("ادی بیا پی") or msg.media.caption:match("اد") or msg.media.caption:match("عشقم بیا پیوی کارت دارم")
-if tabchi_caption and lock_tabchi == "yes" then
- if is_channel then
-   del_msg (chat, tonumber(msg.id))
-    kick_user(user, chat)
-      end
-    end
-local fosh_caption = msg.media.caption:match("کص")or msg.media.caption:match("کون")or msg.media.caption:match("ممه")or msg.media.caption:match("کیری")or msg.media.caption:match("حرومی")or msg.media.caption:match("ننه") or msg.media.caption:match("کصده")or msg.media.caption:match("کث")or msg.media.caption:match("کسکش")or msg.media.caption:match("کصکش")or msg.media.caption:match("لاشی")or msg.media.caption:match("ناموس")or msg.media.caption:match("جنده")or msg.media.caption:match("یتیم")or msg.media.caption:match("خارکسده")or msg.media.caption:match("مادرجنده")or msg.media.caption:match("حرومزاده")or msg.media.caption:match("خواهرجنده")or msg.media.caption:match("خواهرتو")or msg.media.caption:match("مادرتو")or msg.media.caption:match("کونی")or msg.media.caption:match("اوبی")or msg.media.caption:match("لاشی")or msg.media.caption:match("kir")or msg.media.caption:match("kos")or msg.media.caption:match("lashi")
+local fosh_caption = msg.media.caption:match("کص")or msg.media.caption:match("کون")or msg.media.caption:match("ممه")or msg.media.caption:match("کیری")or msg.media.caption:match("کیر")or msg.media.caption:match("حرومی")or msg.media.caption:match("ننه") or msg.media.caption:match("کصده")or msg.media.caption:match("کث")or msg.media.caption:match("کسکش")or msg.media.caption:match("کصکش")or msg.media.caption:match("لاشی")or msg.media.caption:match("ناموس")or msg.media.caption:match("جنده")or msg.media.caption:match("یتیم")or msg.media.caption:match("خارکسده")or msg.media.caption:match("مادرجنده")or msg.media.caption:match("حرومزاده")or msg.media.caption:match("خواهرجنده")or msg.media.caption:match("خواهرتو")or msg.media.caption:match("مادرتو")or msg.media.caption:match("کونی")or msg.media.caption:match("اوبی")or msg.media.caption:match("لاشی")or msg.media.caption:match("kir")or msg.media.caption:match("kos")or msg.media.caption:match("lashi")
 if fosh_caption and fosh == "yes" then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
@@ -498,14 +486,6 @@ if tag_msg and lock_tag == "yes" then
 kick_user(user, chat)
    end
 end
-local tabchi_msg = msg.text:match("Bia Pv") or msg.text:match("Addi") or msg.text:match("bia pv") or msg.text:match("addi") or msg.text:match("Ad") or msg.text:match("ad") or msg.text:match("Add") or msg.text:match("ادی بیا پی وی") or msg.text:match("اددی") or msg.text:match("ادی بیا پی") or msg.text:match("اد") or msg.text:match("عشقم بیا پیوی کارت دارم")
-if tabchi_msg
-and lock_tabchi == "yes" then
- if is_channel then
-   del_msg (chat, tonumber(msg.id))
-    kick_user(user, chat)
-      end
-    end
 if is_filter(msg, msg.text) then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
@@ -515,14 +495,6 @@ kick_user(user, chat)
     end
 local arabic_msg = msg.text:match("[\216-\219][\128-\191]")
 if arabic_msg and lock_arabic == "yes" then
- if is_channel then
- del_msg(chat, tonumber(msg.id))
-  elseif is_chat then
-kick_user(user, chat)
-   end
-end
-local tabchi = msg.text:match("ادی") or msg.text:match("addi")
-if tabchi and lock_tabchi == "yes" then
  if is_channel then
  del_msg(chat, tonumber(msg.id))
   elseif is_chat then
